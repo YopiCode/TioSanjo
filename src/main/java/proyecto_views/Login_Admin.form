@@ -63,15 +63,15 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTextField1" min="-2" pref="262" max="-2" attributes="0"/>
+                                  <Component id="inputClave" min="-2" pref="262" max="-2" attributes="0"/>
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField2" min="-2" pref="262" max="-2" attributes="0"/>
+                                  <Component id="inputUser" min="-2" pref="262" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="btnIngresar1" min="-2" pref="156" max="-2" attributes="0"/>
+                          <Component id="btnIngresar" min="-2" pref="156" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -103,13 +103,13 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jTextField2" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="inputUser" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTextField1" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="inputClave" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                  <Component id="btnIngresar1" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="btnIngresar" min="-2" pref="39" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="btnretornar1" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -118,7 +118,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="btnIngresar1">
+        <Component class="javax.swing.JButton" name="btnIngresar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="1b" green="0" red="ee" type="rgb"/>
@@ -133,7 +133,7 @@
             <Property name="borderPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIngresar1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIngresarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton4">
@@ -151,9 +151,9 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="inputClave">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="inputUser">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>

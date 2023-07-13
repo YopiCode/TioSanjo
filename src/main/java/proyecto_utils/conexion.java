@@ -1,26 +1,24 @@
-
 package proyecto_utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class conexion {
-    
-    
-     private Connection connection;
-     public Connection conectar(){
-        String databaseName = "jtech_db";
+
+    public static Connection conectar() {
+        String databaseName = "restaurante";
         String databaseUser = "root";
-        String databasePassword = "admin";
+        String databasePassword = "yopi123";
         String url = "jdbc:mysql://localhost/" + databaseName;
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            connection = DriverManager.getConnection(url, databaseUser, databasePassword);
-           
-        }catch (Exception e){
+            return DriverManager.getConnection(url, databaseUser, databasePassword);
+
+        } catch (ClassNotFoundException | SQLException e) {
             System.out.println("No se conectó a la base " + databaseName);
         }
-        return connection;
+        return null;
     }
 }

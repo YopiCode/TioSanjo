@@ -1,15 +1,27 @@
 package proyecto_views;
 
+import java.util.List;
+import proyecto_DAO.EmpleadoDao;
+import proyecto_models.Empleado;
+
 public class formPrincipal_mozo extends javax.swing.JFrame {
 
     public static void main(String[] args) {
         formPrincipal_mozo fm = new formPrincipal_mozo();
         fm.setVisible(true);
     }
+    
+    List<Empleado> empleados;
+    EmpleadoDao dao = new EmpleadoDao();
 
     public formPrincipal_mozo() {
         initComponents();
         setLocationRelativeTo(this);
+        
+        empleados = dao.listaMozos();
+        
+        mozosComboBox.removeAllItems();
+        empleados.forEach(item -> mozosComboBox.addItem(item.getUsuario()));
     }
 
     @SuppressWarnings("unchecked")
@@ -54,7 +66,7 @@ public class formPrincipal_mozo extends javax.swing.JFrame {
         MESA11 = new javax.swing.JButton();
         MESA12 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        mozosComboBox = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -240,7 +252,12 @@ public class formPrincipal_mozo extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("VENDEDOR");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MOZO 1", "MOZO 2", "MOZO 3" }));
+        mozosComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MOZO 1", "MOZO 2", "MOZO 3" }));
+        mozosComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mozosComboBoxActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -297,7 +314,7 @@ public class formPrincipal_mozo extends javax.swing.JFrame {
                                 .addGroup(jPanel3Layout.createSequentialGroup()
                                     .addComponent(jLabel2)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(mozosComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel3Layout.createSequentialGroup()
                                     .addComponent(MESA10, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(59, 59, 59)
@@ -341,7 +358,7 @@ public class formPrincipal_mozo extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(mozosComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
@@ -458,6 +475,10 @@ public class formPrincipal_mozo extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_MESA12ActionPerformed
 
+    private void mozosComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mozosComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mozosComboBoxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton MESA1;
@@ -479,7 +500,6 @@ public class formPrincipal_mozo extends javax.swing.JFrame {
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton9;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -503,5 +523,6 @@ public class formPrincipal_mozo extends javax.swing.JFrame {
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;
     private java.awt.MenuBar menuBar1;
+    private javax.swing.JComboBox<String> mozosComboBox;
     // End of variables declaration//GEN-END:variables
 }
