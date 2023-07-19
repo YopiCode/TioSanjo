@@ -24,12 +24,12 @@ public class Login_Mozo extends javax.swing.JFrame {
         btnIngresar = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        inputClave = new javax.swing.JTextField();
         inputUser = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnretornar2 = new javax.swing.JButton();
+        inputClave = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 51, 51));
@@ -96,10 +96,11 @@ public class Login_Mozo extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addGap(250, 250, 250))
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(inputClave, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3)
-                                .addComponent(inputUser, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(inputUser, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addContainerGap()))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -129,9 +130,9 @@ public class Login_Mozo extends javax.swing.JFrame {
                 .addComponent(inputUser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputClave, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(inputClave, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnretornar2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,7 +159,10 @@ public class Login_Mozo extends javax.swing.JFrame {
 
         Empleado empleado = new Empleado(usuario, clave, 1);
         
-        if (!dao.verificarCredenciales(empleado)) return;
+        if (!dao.verificarCredenciales(empleado)) {
+            JOptionPane.showMessageDialog(null, "Los datos son incorrectos. Por favor, verifica tu usuario y contraseña.","Credenciales incorrectas | Tio Sanjo",JOptionPane.ERROR_MESSAGE);
+            return;
+    }
         
         formPrincipal_mozo fm = new formPrincipal_mozo();
         fm.setVisible(true);
@@ -185,7 +189,7 @@ public class Login_Mozo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;
     private javax.swing.JButton btnretornar2;
-    private javax.swing.JTextField inputClave;
+    private javax.swing.JPasswordField inputClave;
     private javax.swing.JTextField inputUser;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;

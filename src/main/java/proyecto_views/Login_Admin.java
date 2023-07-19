@@ -1,5 +1,6 @@
 package proyecto_views;
 
+import javax.swing.JOptionPane;
 import proyecto_DAO.EmpleadoDao;
 import proyecto_models.Empleado;
 
@@ -20,12 +21,12 @@ public class Login_Admin extends javax.swing.JFrame {
         btnIngresar = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        inputClave = new javax.swing.JTextField();
         inputUser = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnretornar1 = new javax.swing.JButton();
+        inputClave = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 51, 51));
@@ -70,6 +71,12 @@ public class Login_Admin extends javax.swing.JFrame {
             }
         });
 
+        inputClave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputClaveActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -86,10 +93,11 @@ public class Login_Admin extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addGap(250, 250, 250))
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(inputClave, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3)
-                                .addComponent(inputUser, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(inputUser, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addContainerGap()))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -119,9 +127,9 @@ public class Login_Admin extends javax.swing.JFrame {
                 .addComponent(inputUser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputClave, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(inputClave, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
                 .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnretornar1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -148,7 +156,12 @@ public class Login_Admin extends javax.swing.JFrame {
 
         Empleado empleado = new Empleado(usuario, clave, 2);
         
-        if (!dao.verificarCredenciales(empleado)) return;
+        if (!dao.verificarCredenciales(empleado)){ 
+            JOptionPane.showMessageDialog(null,"Los datos son incorrectos. Por favor, verifica tu usuario y contraseña.",
+                    "Datos Incorrectos | Tio Sanjo",JOptionPane.ERROR_MESSAGE);
+            
+            return;
+        }
         formPrincipalAdmin fp=new formPrincipalAdmin();
         fp.setVisible(true);
         this.dispose();
@@ -161,6 +174,10 @@ public class Login_Admin extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnretornar1ActionPerformed
 
+    private void inputClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputClaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputClaveActionPerformed
+
     public static void main(String args[]) {
         Login_Admin lo = new Login_Admin();
         lo.setVisible(true);
@@ -170,7 +187,7 @@ public class Login_Admin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;
     private javax.swing.JButton btnretornar1;
-    private javax.swing.JTextField inputClave;
+    private javax.swing.JPasswordField inputClave;
     private javax.swing.JTextField inputUser;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
