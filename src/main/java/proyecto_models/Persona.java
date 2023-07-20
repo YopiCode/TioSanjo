@@ -6,10 +6,10 @@ public class Persona {
 
     private int id_persona;
     private String nombre;
-    private String apellido;
-    private Date fechaNacimiento;
+    private String apellidos;
+    private Date fecha_nacimiento;
     private int genero;
-    private String direcion;
+    private String direccion;
     private int telefono;
     private String correo;
     private int dni;
@@ -17,10 +17,10 @@ public class Persona {
     public Persona(int id, String nombre, String apellido, Date fechaNacimiento, int genero, String direcion, int telefono, String correo, int dni) {
         this.id_persona = id;
         this.nombre = nombre;
-        this.apellido = apellido;
-        this.fechaNacimiento = fechaNacimiento;
+        this.apellidos = apellido;
+        this.fecha_nacimiento = fechaNacimiento;
         this.genero = genero;
-        this.direcion = direcion;
+        this.direccion = direcion;
         this.telefono = telefono;
         this.correo = correo;
         this.dni = dni;
@@ -28,10 +28,10 @@ public class Persona {
 
     public Persona(String nombre, String apellido, Date fechaNacimiento, int genero, String direcion, int telefono, String correo, int dni) {
         this.nombre = nombre;
-        this.apellido = apellido;
-        this.fechaNacimiento = fechaNacimiento;
+        this.apellidos = apellido;
+        this.fecha_nacimiento = fechaNacimiento;
         this.genero = genero;
-        this.direcion = direcion;
+        this.direccion = direcion;
         this.telefono = telefono;
         this.correo = correo;
         this.dni = dni;
@@ -39,15 +39,14 @@ public class Persona {
 
     public Persona() {
     }
-    
-    
 
-    public int getId() {
+
+    public int getId_persona() {
         return id_persona;
     }
 
-    public void setId(int id) {
-        this.id_persona = id;
+    public void setId_persona(int id_persona) {
+        this.id_persona = id_persona;
     }
 
     public String getNombre() {
@@ -58,20 +57,20 @@ public class Persona {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getApellidos() {
+        return apellidos;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
+    public Date getFecha_nacimiento() {
+        return fecha_nacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setFecha_nacimiento(Date fecha_nacimiento) {
+        this.fecha_nacimiento = fecha_nacimiento;
     }
 
     public int getGenero() {
@@ -82,12 +81,12 @@ public class Persona {
         this.genero = genero;
     }
 
-    public String getDirecion() {
-        return direcion;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setDirecion(String direcion) {
-        this.direcion = direcion;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public int getTelefono() {
@@ -116,7 +115,16 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" + "id=" + id_persona + ", nombre=" + nombre + ", apellido=" + apellido + ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + ", direcion=" + direcion + ", telefono=" + telefono + ", correo=" + correo + ", dni=" + dni + '}';
+        return "Persona{" +
+                "id_persona=" + id_persona +
+                ", nombre='" + nombre + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", fecha_nacimiento=" + fecha_nacimiento +
+                ", genero=" + genero +
+                ", direcion='" + direccion + '\'' +
+                ", telefono=" + telefono +
+                ", correo='" + correo + '\'' +
+                ", dni=" + dni +
+                '}';
     }
-
 }

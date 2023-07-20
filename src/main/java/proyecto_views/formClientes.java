@@ -4,22 +4,34 @@
  */
 package proyecto_views;
 
+import proyecto_DAO.ClienteDao;
+import proyecto_DAO.PersonaDao;
+
 import javax.swing.table.DefaultTableModel;
 
-
-
+import static proyecto_utils.LlenadoTabla.LlenarTabla;
 
 
 public class formClientes extends javax.swing.JPanel {
     
     String [] encabezado={"Nombre","Apellidos","Direccion","Telefono"};
-    DefaultTableModel tabCli;
+    ClienteDao dao = new ClienteDao();
+    PersonaDao personaDao = new PersonaDao();
 
     public formClientes() {
         initComponents();
-        tabCli = new DefaultTableModel(null, encabezado);
-        tabClientes.setModel(tabCli);
+        listarTabla();
        
+    }
+
+    public void listarTabla() {
+        Object[][] data = dao.listaCliente().stream()
+                .map(item->new Object[]{personaDao.getPersona(item.getId_persona()).getNombre(),
+                        personaDao.getPersona(item.getId_persona()).getApellidos(),
+                        personaDao.getPersona(item.getId_persona()).getDireccion(),
+                        personaDao.getPersona(item.getId_persona()).getTelefono()})
+                .toArray(Object[][]::new);
+        LlenarTabla(tabClientes, encabezado, data);
     }
 
     

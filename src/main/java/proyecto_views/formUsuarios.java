@@ -6,8 +6,14 @@ package proyecto_views;
 
 
 
+import proyecto_DAO.EmpleadoDao;
+import proyecto_DAO.PersonaDao;
+import proyecto_models.Persona;
+
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
+
+import static proyecto_utils.LlenadoTabla.LlenarTabla;
 
 /**
  *
@@ -15,14 +21,12 @@ import java.util.List;
  */
 public class formUsuarios extends javax.swing.JPanel {
  
-        String [] encabezado={"NOMBRE EMPLEADO","TIPO EMPLEADO","TELEFONO"};
-    DefaultTableModel tabUsu;
-   
-    
+    String [] encabezado={"NOMBRE EMPLEADO","TIPO EMPLEADO","TELEFONO"};
+    EmpleadoDao dao = new EmpleadoDao();
+    PersonaDao personaDao = new PersonaDao();
     public formUsuarios() {
         initComponents();
-      tabUsu = new DefaultTableModel(null, encabezado);
-        tabUser.setModel(tabUsu);
+        listarTabla();
     }
 
  
@@ -136,7 +140,12 @@ public class formUsuarios extends javax.swing.JPanel {
 
    
     public void listarTabla() {
-      
+        Object[][] data = dao.listaEmpleados().stream()
+                .map(item->new Object[]{personaDao.getPersona(item.getId_persona()).getNombre(),
+                        item.getId_tipoempleado(),
+                        personaDao.getPersona(item.getId_persona()).getTelefono()})
+                .toArray(Object[][]::new);
+        LlenarTabla(tabUser, encabezado, data);
     }
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
        

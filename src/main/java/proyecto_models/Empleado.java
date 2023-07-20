@@ -2,21 +2,27 @@ package proyecto_models;
 
 public class Empleado{
     private int id_empleado;
-    private int idPersona;
-    private int id_tipo;
+    private int id_persona;
+    private int id_tipoempleado;
     private String usuario;
     private String clave;
 
     public Empleado(String usuario, String clave, int id_tipo) {
         this.usuario = usuario;
         this.clave = clave;
-        this.id_tipo = id_tipo;
+        this.id_tipoempleado = id_tipo;
     }
 
     public Empleado() {
     }
-    
-    
+
+    public int getId_persona() {
+        return id_persona;
+    }
+
+    public void setId_persona(int id_persona) {
+        this.id_persona = id_persona;
+    }
 
     public int getId_empleado() {
         return id_empleado;
@@ -26,12 +32,12 @@ public class Empleado{
         this.id_empleado = id_empleado;
     }
 
-    public int getId_tipo() {
-        return id_tipo;
+    public int getId_tipoempleado() {
+        return id_tipoempleado;
     }
 
-    public void setId_tipo(int id_tipo) {
-        this.id_tipo = id_tipo;
+    public void setId_tipoempleado(int id_tipoempleado) {
+        this.id_tipoempleado = id_tipoempleado;
     }
 
     public String getUsuario() {
@@ -52,7 +58,7 @@ public class Empleado{
 
     @Override
     public String toString() {
-        return "Empleado{" + "id_empleado=" + id_empleado + ", id_tipo=" + id_tipo + ", usuario=" + usuario + ", clave=" + clave + '}';
+        return "Empleado{" + "id_empleado=" + id_empleado + ", id_tipo=" + id_tipoempleado + ", usuario=" + usuario + ", clave=" + clave + '}';
     }
 
     

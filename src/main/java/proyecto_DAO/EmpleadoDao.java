@@ -8,52 +8,41 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import proyecto_models.Empleado;
-import static proyecto_utils.conexion.conectar;
+import proyecto_utils.Crud;
+
+import static proyecto_utils.Conexion.conectar;
 
 public class EmpleadoDao {
+    Crud<Empleado> empleadoCrud = new Crud<>(Empleado.class);
+    Empleado empleado = new Empleado();
 
     public boolean verificarCredenciales(Empleado empleado) {
-        String query = "select * from empleado where usuario=? and id_tipoempleado=?";
+        return empleadoCrud.findByFields(empleado, "usuario", "clave") != null;
+    }
 
-        try (PreparedStatement ps = conectar().prepareCall(query)) {
-            ps.setString(1, empleado.getUsuario());
-            ps.setInt(2, empleado.getId_tipo());
-            ResultSet res = ps.executeQuery();
-            while(res.next()){
-                String clave = res.getString("clave");
-                if (empleado.getClave().equals(clave)) {
-                    return true;
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
+    public Empleado registrarEmpleado(Empleado empleado){
+        return empleadoCrud.create(empleado);
     }
-    
-    
+
+    public Empleado actualizarEmpleado(Empleado empleado){
+        return empleadoCrud.update(empleado);
+    }
+
+    public void eliminarEmpleado(int id){
+        empleadoCrud.delete(id);
+    }
+
     public List<Empleado> listaMozos(){
-        List<Empleado> lista = new ArrayList<>();
-        
-        String query = "select * from empleado where id_tipoempleado=1";
-        
-        try (PreparedStatement ps = conectar().prepareCall(query)) {
-            ResultSet res = ps.executeQuery();
-            while(res.next()){
-                Empleado empleado = new Empleado();
-                empleado.setId_empleado(res.getInt("id_empleado"));
-                empleado.setId_tipo(res.getInt("id_tipoempleado"));
-                empleado.setUsuario(res.getString("usuario"));
-                lista.add(empleado);
-                
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return lista;
+        empleado.setId_tipoempleado(1);
+        return empleadoCrud.findByAllFields(empleado, "id_tipoempleado");
     }
-   
-    
+
+    public Empleado getEmpleado(int id){
+        return empleadoCrud.findById(id);
+    }
+
+    public List<Empleado> listaEmpleados(){
+        return empleadoCrud.readAll();
+    }
 
 }
