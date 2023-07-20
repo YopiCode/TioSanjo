@@ -41,7 +41,7 @@ public class EmpleadoDao {
             ResultSet res = ps.executeQuery();
             while(res.next()){
                 Empleado empleado = new Empleado();
-                empleado.setId(res.getInt("id_empleado"));
+                empleado.setId_empleado(res.getInt("id_empleado"));
                 empleado.setId_tipo(res.getInt("id_tipoempleado"));
                 empleado.setUsuario(res.getString("usuario"));
                 lista.add(empleado);

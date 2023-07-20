@@ -1,10 +1,8 @@
 package proyecto_models;
 
-import java.util.Date;
-
-public class Empleado extends Persona{
-    
+public class Empleado{
     private int id_empleado;
+    private int idPersona;
     private int id_tipo;
     private String usuario;
     private String clave;
