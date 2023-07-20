@@ -20,6 +20,8 @@ public class Empleado{
         return id_persona;
     }
 
+
+
     public void setId_persona(int id_persona) {
         this.id_persona = id_persona;
     }
@@ -56,13 +58,15 @@ public class Empleado{
         this.clave = clave;
     }
 
+
     @Override
     public String toString() {
-        return "Empleado{" + "id_empleado=" + id_empleado + ", id_tipo=" + id_tipoempleado + ", usuario=" + usuario + ", clave=" + clave + '}';
+        return "Empleado{" +
+                "id_empleado=" + id_empleado +
+                ", id_persona=" + id_persona +
+                ", id_tipoempleado=" + id_tipoempleado +
+                ", usuario='" + usuario + '\'' +
+                ", clave='" + clave + '\'' +
+                '}';
     }
-
-    
-
-        
-    
 }

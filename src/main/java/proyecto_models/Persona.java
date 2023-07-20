@@ -121,7 +121,7 @@ public class Persona {
                 ", apellidos='" + apellidos + '\'' +
                 ", fecha_nacimiento=" + fecha_nacimiento +
                 ", genero=" + genero +
-                ", direcion='" + direccion + '\'' +
+                ", direccion='" + direccion + '\'' +
                 ", telefono=" + telefono +
                 ", correo='" + correo + '\'' +
                 ", dni=" + dni +
