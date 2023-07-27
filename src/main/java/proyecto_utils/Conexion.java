@@ -9,7 +9,7 @@ public class Conexion {
     public static Connection conectar() {
         String databaseName = "tiosanjo";
         String databaseUser = "root";
-        String databasePassword = "yopi123";
+        String databasePassword = "admin";
         String url = "jdbc:mysql://localhost/" + databaseName;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

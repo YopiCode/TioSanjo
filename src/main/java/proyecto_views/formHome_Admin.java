@@ -5,12 +5,23 @@
 package proyecto_views;
 
 
+import proyecto_DAO.ClienteDao;
+import proyecto_DAO.PagoDao;
+import proyecto_DAO.PedidoDao;
+import proyecto_models.Cliente;
+import proyecto_models.Pedido;
 
 public class formHome_Admin extends javax.swing.JPanel {
 
-   
+   ClienteDao clienteDao = new ClienteDao();
+   PagoDao pagoDao= new PagoDao();
+   PedidoDao pedidoDao= new PedidoDao();
+    double ingresos = 0;
     public formHome_Admin() {
       initComponents();
+      lblClientes.setText(String.valueOf(clienteDao.listaCliente().size()));
+      pagoDao.listaPago().forEach(item-> ingresos += pedidoDao.getPedido(item.getIdPedido()).getTotal());
+      lblIngresos.setText(String.valueOf(ingresos));
     }
 
   

@@ -4,22 +4,29 @@
  */
 package proyecto_views;
 
-import proyecto_DAO.ClienteDao;
-import proyecto_DAO.ItemCartaDao;
-import proyecto_DAO.PagoDao;
-import proyecto_DAO.PedidoDao;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.util.JRLoader;
+import proyecto_DAO.*;
 import proyecto_models.*;
+import proyecto_utils.Boleta;
+import proyecto_utils.DetalleBoleta;
 
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.SocketTimeoutException;
+import java.util.*;
+
 import static proyecto_views.formPrincipalAdmin.panelContenido;
 
 
 public class formCaja extends javax.swing.JPanel {
     PedidoDao pedidoDao = new PedidoDao();
     ItemCartaDao itemCartaDao = new ItemCartaDao();
+    MesaDao mesaDao = new MesaDao();
     PagoDao pagoDao = new PagoDao();
     ClienteDao clienteDao = new ClienteDao();
     List<Pedido> pedidos = pedidoDao.listaPedido();
@@ -37,13 +44,10 @@ public class formCaja extends javax.swing.JPanel {
 
     public void listarTablaPedidos() {
         String[] encabezado = {"Nro", "Cliente", "Mesa", "Fecha", "Estado"};
-        Object[][] data = pedidos.stream()
+        Object[][] data = pedidos.stream().filter(item -> pagoDao.getPagoByIdPedido(item.getId()) == null)
                 .map(item -> {
                     Cliente cliente = clienteDao.getCliente(item.getIdCliente());
-                    String estado = "Cancelado";
-                    if (pagoDao.getPagoByIdPedido(item.getId()) != null) {
-                        estado = "Sin Cancelar";
-                    }
+                    String estado = "Sin Cancelar";
                     return new Object[]{item.getId(),
                             cliente.getNombre(),
                             item.getIdMesa(),
@@ -193,8 +197,55 @@ public class formCaja extends javax.swing.JPanel {
         pago.setFecha(new Date());
         pagoDao.registrarPago(pago);
         new CambiaPanel(panelContenido, new formCaja());
+
+        Cliente cliente = clienteDao.getCliente(pedido.getIdCliente());
+        String img = Boleta.class.getClassLoader().getResource("img/logo_LOGIN.jpg").getPath();
+        Boleta boleta = new Boleta(img, cliente.getDni(), cliente.getNombre(), String.valueOf(pedido.getTotal()));
+        List<DetalleBoleta> detalleBoletas = new ArrayList<>();
+        for (DetallePedido detalle : detalles) {
+            DetalleBoleta detalleBoleta = new DetalleBoleta();
+            ItemCarta item = itemCartaDao.getItemCarta(detalle.getIdItem());
+            detalleBoleta.setCantidad(detalle.getCantidad());
+            detalleBoleta.setTotal(detalle.getCantidad() * item.getPrecioUnit());
+            detalleBoleta.setDescripcion(item.getNombre());
+            detalleBoletas.add(detalleBoleta);
+        }
+        System.out.println(detalleBoletas);
+        Mesa mesa = mesaDao.getMesa(pedido.getIdMesa());
+        mesa.setEstado(false);
+        mesaDao.actualizarMesa(mesa);
+
+        JFileChooser fileChooser = new JFileChooser();
+        if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+            File seleccionar = fileChooser.getSelectedFile();
+            String ruta = seleccionar.getAbsolutePath() + ".pdf";
+            generarBoleta(ruta, boleta, detalleBoletas);
+        }
     }//GEN-LAST:event_btnCobrarActionPerformed
 
+    public void generarBoleta(String filePath, Boleta boleta, List<DetalleBoleta> detalleBoleta) {
+        try (FileOutputStream outputStream = new FileOutputStream(filePath)) {
+            JasperReport report = (JasperReport) JRLoader.loadObject(new File(Boleta.class.getClassLoader().getResource("Boleta_ERTSJ.jasper").getPath()));
+            JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(detalleBoleta);
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("dni", boleta.getDni());
+            parameters.put("nombre", boleta.getCliente());
+            parameters.put("total", boleta.getTotal());
+            parameters.put("img", boleta.getImg());
+            JasperPrint jasperPrint = null;
+            try {
+                jasperPrint = JasperFillManager.fillReport(report, parameters, ds);
+            } catch (JRException e) {
+                throw new RuntimeException(e);
+            }
+            JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);
+            outputStream.flush();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (JRException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCobrar;

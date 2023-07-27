@@ -9,6 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class formPedido extends javax.swing.JFrame {
 
@@ -23,7 +24,7 @@ public class formPedido extends javax.swing.JFrame {
 
     InsumoDao insumoDao = new InsumoDao();
 
-
+    List<Insumo> insumos = insumoDao.listaInsumo();
     List<Cliente> clientes = clienteDao.listaCliente();
     List<ItemCarta> items = itemCartaDao.listaItemCarta();
     List<DetallePedido> detalles = new ArrayList<>();
@@ -36,9 +37,14 @@ public class formPedido extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(this);
 
-        clientes.forEach(item -> id_cliente.addItem(item.getApellido()));
         listarTablaitems();
         listarTablaDetalle();
+        llenarCombo();
+    }
+
+    public void llenarCombo(){
+        id_cliente.removeAll();
+        clientes.forEach(item -> id_cliente.addItem(item.getApellido()));
     }
 
     public void listarTablaitems() {
@@ -49,6 +55,7 @@ public class formPedido extends javax.swing.JFrame {
 
     public void listarTablaDetalle() {
         String[] encabezado = {"Nombre", "Precio", "Cantidad", "Total"};
+        total = 0;
         Object[][] data = detalles.stream()
                 .map(item -> {
                     ItemCarta itemCarta = itemCartaDao.getItemCarta(item.getIdItem());
@@ -481,7 +488,7 @@ public class formPedido extends javax.swing.JFrame {
             List<Preparacion> preparaciones = itemCartaDao.getPreparacionByIdItem(itemCarta);
 
             for (Preparacion preparacion : preparaciones) {
-                Insumo insumo = insumoDao.getInsumo(preparacion.getIdItem());
+                Insumo insumo = insumoDao.getInsumo(preparacion.getIdInsumo());
                 insumo.setStock(insumo.getStock() - (detalle.getCantidad() * preparacion.getCantidad()));
                 insumoDao.actualizarInsumo(insumo);
             }
@@ -500,22 +507,33 @@ public class formPedido extends javax.swing.JFrame {
         formRegistroCliente frc = new formRegistroCliente();
         frc.setVisible(true);
         frc.setDefaultCloseOperation(frc.HIDE_ON_CLOSE);
+        frc.btnAgregar.addActionListener((e)->{
+            llenarCombo();
+        });
     }//GEN-LAST:event_btnAgregarClienteActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         ItemCarta itemCarta = items.get(jTable1.getSelectedRow());
         List<Preparacion> preparacion = itemCartaDao.getPreparacionByIdItem(itemCarta);
+        int cant = Integer.parseInt(cantidad.getText());
         for (Preparacion obj : preparacion) {
-            Insumo insumo = insumoDao.getInsumo(obj.getIdInsumo());
-            if (insumo.getStock() <= 3){
+            Insumo insumo = insumos.stream().filter(item -> obj.getIdInsumo() == item.getId()).toList().get(0);
+            int restaTotal = insumo.getStock() - cant * obj.getCantidad();
+            System.out.println(restaTotal);
+            if (restaTotal <= 3){
                 JOptionPane.showMessageDialog(this, "Anda al mercado - "+insumo.getNombre());
                 return;
+            }else{
+                insumo.setStock(insumo.getStock() - cant);
             }
         }
         DetallePedido detallePedido = new DetallePedido();
         detallePedido.setIdItem(itemCarta.getId());
         detallePedido.setCantidad(Integer.parseInt(cantidad.getText()));
         detalles.add(detallePedido);
+
+
+
         listarTablaDetalle();
         txtTotal.setText(String.valueOf(total));
     }//GEN-LAST:event_btnAddActionPerformed

@@ -23,11 +23,13 @@ public class formAbastecimientoOtros extends javax.swing.JFrame {
     public formAbastecimientoOtros() {
         initComponents();
         this.setLocationRelativeTo(this);
-
-        insumos.forEach(item -> idInsumo.addItem(item.getNombre()));
+        llenarCombo();
         listarTabla();
     }
-
+    public void llenarCombo(){
+        idInsumo.removeAll();
+        insumos.forEach(item -> idInsumo.addItem(item.getNombre()));
+    }
     public void listarTabla() {
         tabProductos.removeAll();
         String[] encabezado = {"PRODUCTOS", "PRECIO COMPRA", "CANTIDAD", "FECHA", "TOTAL"};
@@ -234,18 +236,27 @@ public class formAbastecimientoOtros extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarServicioActionPerformed
-        Compra compra = getObjetoFormulario(this, Compra.class);
-        compra.setIdInsumo(insumos.get(compra.getIdInsumo()).getId());
+        Compra compra = new Compra();
+        Insumo insumoCompra = insumos.get(idInsumo.getSelectedIndex());
+        compra.setIdInsumo(insumoCompra.getId());
+        compra.setPrecioCompra(Double.parseDouble(precioCompra.getText()));
+        compra.setCantidad(Integer.parseInt(cantidad.getText()));
+        compra.setFecha(fecha.getDate());
+
         compraDao.registraCompra(compra);
+
+        insumoCompra.setStock(insumoCompra.getStock() + compra.getCantidad());
+        insumoDao.actualizarInsumo(insumoCompra);
         listarTabla();
-        this.dispose();
     }//GEN-LAST:event_btnAgregarServicioActionPerformed
 
     private void btnAgregarServicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarServicio1ActionPerformed
         formRegistrarBebida fb = new formRegistrarBebida();
         fb.setVisible(true);
         fb.setDefaultCloseOperation(fb.HIDE_ON_CLOSE);
-
+        fb.btnAgregar.addActionListener((e)->{
+            llenarCombo();
+        });
     }//GEN-LAST:event_btnAgregarServicio1ActionPerformed
 
 

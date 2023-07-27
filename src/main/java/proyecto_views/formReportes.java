@@ -4,30 +4,70 @@
  */
 package proyecto_views;
 
-import javax.swing.table.DefaultTableModel;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import proyecto_DAO.*;
+import proyecto_models.*;
+import proyecto_utils.Reporte;
 
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 
 /**
  * @author Jhon_A
  */
 public class formReportes extends javax.swing.JPanel {
-    String [] encabezado1={"CLIENTE","CATEGORIA DE ALIMENTO","MOZO","FECHA","IGV","MONTO","TOTAL"};
-    DefaultTableModel tabIng;
-    String [] encabezado2={"N° BOLETA","DETALLE","FECHA","MONTO"};
-    DefaultTableModel tabEgre;
- 
+    PagoDao pagoDao = new PagoDao();
+    PedidoDao pedidoDao = new PedidoDao();
+    CompraDao compraDao = new CompraDao();
+    ClienteDao clienteDao = new ClienteDao();
+    InsumoDao insumoDao = new InsumoDao();
+    EmpleadoDao empleadoDao = new EmpleadoDao();
+    List<Pago> pagos = pagoDao.listaPago();
+    List<Compra> compras = compraDao.listaCompra();
+
+    Sheet sheet;
+    int colNum;
+    int rowNum;
+    CellStyle dateCellStyle;
+    CellStyle dataStyle;
 
     public formReportes() {
         initComponents();
-        tabIng = new DefaultTableModel(null, encabezado1);
-        tabIngresos.setModel(tabIng);
-        
-         tabEgre = new DefaultTableModel(null, encabezado2);
-        tabEgresos.setModel(tabEgre);
-       
+        listarTablaPago();
+        listarTablaCompra();
     }
 
+    public void listarTablaPago() {
+        String [] encabezado={"CLIENTE","MOZO","FECHA","TOTAL"};
+        Object[][] data = pagos.stream().map(item ->{
+            Pedido pedido = pedidoDao.getPedido(item.getIdPedido());
+            Cliente cliente = clienteDao.getCliente(pedido.getIdCliente());
+            Empleado empleado = empleadoDao.getEmpleado(pedido.getIdUsuario());
+            return new Object[]{cliente.getNombre(), empleado.getUsuario(), item.getFecha(), pedido.getTotal()};
+        }).toArray(Object[][]::new);
+        tabIngresos.setModel(new DefaultTableModel(data, encabezado));
+    }
+
+    public void listarTablaCompra() {
+        String [] encabezado={"Insumo","Cantidad","FECHA","MONTO"};
+        Object[][] data = compras.stream().map(item -> {
+            Insumo insumo = insumoDao.getInsumo(item.getIdInsumo());
+            return new Object[]{insumo.getNombre(), item.getCantidad(), item.getFecha(), item.getCantidad()* item.getPrecioCompra()};
+        }).toArray(Object[][]::new);
+        tabEgresos.setModel(new DefaultTableModel(data, encabezado));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -102,6 +142,11 @@ public class formReportes extends javax.swing.JPanel {
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("EXPORTAR INGRESOS");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 138, 156, 39));
 
         tabEgresos.setModel(new javax.swing.table.DefaultTableModel(
@@ -123,6 +168,11 @@ public class formReportes extends javax.swing.JPanel {
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("EXPORTAR EGRESOS");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 138, 155, 39));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -136,8 +186,129 @@ public class formReportes extends javax.swing.JPanel {
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        int option = fileChooser.showSaveDialog(null);
+        if (option == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            String filePath = selectedFile.getAbsolutePath() + ".xlsx";
 
+            String[] headers = {"CLIENTE","MOZO","FECHA","TOTAL"};
+            generarReporteExcel(filePath, headers, "Egresos", ()->{
+                for (Pago pago: pagos) {
+                    Pedido pedido = pedidoDao.getPedido(pago.getIdPedido());
+                    Cliente cliente = clienteDao.getCliente(pedido.getIdCliente());
+                    Empleado empleado = empleadoDao.getEmpleado(pedido.getIdUsuario());
+                    Row row = sheet.createRow(rowNum++);
+                    colNum = 0;
+
+                    row.createCell(colNum++).setCellValue(cliente.getNombre());
+                    row.createCell(colNum++).setCellValue(empleado.getUsuario());
+
+                    Cell dateCell = row.createCell(colNum++);
+                    dateCell.setCellValue(pago.getFecha());
+                    dateCell.setCellStyle(dateCellStyle);
+
+                    row.createCell(colNum++).setCellValue(pedido.getTotal());
+
+                    for (Cell cell : row) {
+                        cell.setCellStyle(dataStyle);
+                    }
+                }
+            });
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+            File seleccionar = fileChooser.getSelectedFile();
+            String ruta = seleccionar.getAbsolutePath() + ".pdf";
+
+            String[] headers = {"Insumo","Cantidad","FECHA","MONTO"};
+            generarReporteExcel(ruta, headers, "Egresos", ()->{
+                for (Compra compra : compras) {
+                    Row row = sheet.createRow(rowNum++);
+                    colNum = 0;
+
+                    row.createCell(colNum++).setCellValue(insumoDao.getInsumo(compra.getIdInsumo()).getNombre());
+                    row.createCell(colNum++).setCellValue(compra.getCantidad());
+
+                    Cell dateCell = row.createCell(colNum++);
+                    dateCell.setCellValue(compra.getFecha());
+                    dateCell.setCellStyle(dateCellStyle);
+
+                    row.createCell(colNum++).setCellValue(compra.getCantidad() * compra.getPrecioCompra());
+
+                    for (Cell cell : row) {
+                        cell.setCellStyle(dataStyle);
+                    }
+                }
+            });
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    
+    private void generarReporteExcel(String ruta, String[] headers, String tipo, Reporte reporte){
+        Workbook workbook = new XSSFWorkbook();
+        sheet = workbook.createSheet("Reporte");
+        String titulo = "Reporte de " + tipo;
+
+        CellStyle titleStyle = workbook.createCellStyle();
+        titleStyle.setAlignment(HorizontalAlignment.CENTER);
+        Font titleFont = workbook.createFont();
+        titleFont.setBold(true);
+        titleFont.setFontHeightInPoints((short) 16);
+        titleStyle.setFont(titleFont);
+
+        CellStyle headerStyle = workbook.createCellStyle();
+        headerStyle.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());
+        headerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        headerStyle.setAlignment(HorizontalAlignment.CENTER);
+        Font headerFont = workbook.createFont();
+        headerFont.setBold(true);
+        headerStyle.setFont(headerFont);
+
+        dataStyle = workbook.createCellStyle();
+        dataStyle.setAlignment(HorizontalAlignment.CENTER);
+
+        DataFormat dataFormat = workbook.createDataFormat();
+
+        dateCellStyle = workbook.createCellStyle();
+        dateCellStyle.setDataFormat(dataFormat.getFormat("yyyy-MM-dd"));
+
+        CellStyle timeCellStyle = workbook.createCellStyle();
+        timeCellStyle.setDataFormat(dataFormat.getFormat("HH:mm:ss"));
+
+        Row titleRow = sheet.createRow(0);
+        Cell titleCell = titleRow.createCell(0);
+        titleCell.setCellValue(titulo);
+        titleCell.setCellStyle(titleStyle);
+        sheet.addMergedRegion(new CellRangeAddress(0, 0, 0, 3));
+
+
+        rowNum = 2;
+        Row headerRow = sheet.createRow(1);
+        colNum = 0;
+
+        for (String header : headers) {
+            Cell cell = headerRow.createCell(colNum++);
+            cell.setCellValue(header);
+            cell.setCellStyle(headerStyle);
+        }
+        for (int i = 0; i < headers.length; i++) {
+            sheet.setColumnWidth(i, 20 * 256);
+        }
+
+
+        reporte.setValores();
+;
+        try (FileOutputStream outputStream = new FileOutputStream(ruta)) {
+            workbook.write(outputStream);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

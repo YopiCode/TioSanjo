@@ -100,13 +100,18 @@ public class formPlatillos extends javax.swing.JPanel {
         formRegistroBebida frp = new formRegistroBebida();
         frp.setVisible(true);
         frp.setDefaultCloseOperation(frp.HIDE_ON_CLOSE);
-
+        frp.btnAgregar.addActionListener((e)->{
+            listarTablaItems();
+        });
     }//GEN-LAST:event_btnBebidaActionPerformed
 
     private void btnNuevoProducto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoProducto1ActionPerformed
         formRegistroPlatillo frp = new formRegistroPlatillo();
         frp.setVisible(true);
         frp.setDefaultCloseOperation(frp.HIDE_ON_CLOSE);
+        frp.btnAgregar.addActionListener((e)->{
+            listarTablaItems();
+        });
     }//GEN-LAST:event_btnNuevoProducto1ActionPerformed
 
 

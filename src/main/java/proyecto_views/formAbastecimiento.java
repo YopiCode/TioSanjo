@@ -35,6 +35,7 @@ public class formAbastecimiento extends javax.swing.JPanel {
         btnOtros = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        btnInsumos = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -64,13 +65,24 @@ public class formAbastecimiento extends javax.swing.JPanel {
                 btnOtrosActionPerformed(evt);
             }
         });
-        add(btnOtros, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 350, 127, 39));
+        add(btnOtros, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 350, 127, 39));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/compra_bebidas.jpg"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, -1, 197));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/compras_cocina.jpeg"))); // NOI18N
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 250, 200));
+
+        btnInsumos.setBackground(new java.awt.Color(238, 0, 27));
+        btnInsumos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnInsumos.setForeground(new java.awt.Color(255, 255, 255));
+        btnInsumos.setText("INSUMOS");
+        btnInsumos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsumosActionPerformed(evt);
+            }
+        });
+        add(btnInsumos, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 440, 127, 39));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCocinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCocinaActionPerformed
@@ -85,11 +97,18 @@ public class formAbastecimiento extends javax.swing.JPanel {
       fo.setDefaultCloseOperation(fo.HIDE_ON_CLOSE);
     }//GEN-LAST:event_btnOtrosActionPerformed
 
+    private void btnInsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsumosActionPerformed
+        formInsumos ffc = new  formInsumos();
+        ffc.setVisible(true);
+        ffc.setDefaultCloseOperation(ffc.HIDE_ON_CLOSE);
+    }//GEN-LAST:event_btnInsumosActionPerformed
+
     
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCocina;
+    private javax.swing.JButton btnInsumos;
     private javax.swing.JButton btnOtros;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
