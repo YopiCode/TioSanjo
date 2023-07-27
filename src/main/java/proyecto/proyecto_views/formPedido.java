@@ -43,7 +43,7 @@ public class formPedido extends javax.swing.JFrame {
     }
 
     public void llenarCombo(){
-        id_cliente.removeAll();
+        id_cliente.removeAllItems();
         clientes.forEach(item -> id_cliente.addItem(item.getApellido()));
     }
 
