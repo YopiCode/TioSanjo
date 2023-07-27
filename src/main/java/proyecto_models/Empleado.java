@@ -1,45 +1,33 @@
 package proyecto_models;
 
 public class Empleado{
-    private int id_empleado;
-    private int id_persona;
-    private int id_tipoempleado;
+    private int id;
     private String usuario;
     private String clave;
+    private int idTipoEmpleado;
 
-    public Empleado(String usuario, String clave, int id_tipo) {
+    public Empleado(int id, String usuario, String clave, int idTipoEmpleado) {
+        this.id = id;
         this.usuario = usuario;
         this.clave = clave;
-        this.id_tipoempleado = id_tipo;
+        this.idTipoEmpleado = idTipoEmpleado;
+    }
+
+    public Empleado(String usuario, String clave, int idTipoEmpleado) {
+        this.usuario = usuario;
+        this.clave = clave;
+        this.idTipoEmpleado = idTipoEmpleado;
     }
 
     public Empleado() {
     }
 
-    public int getId_persona() {
-        return id_persona;
+    public int getId() {
+        return id;
     }
 
-
-
-    public void setId_persona(int id_persona) {
-        this.id_persona = id_persona;
-    }
-
-    public int getId_empleado() {
-        return id_empleado;
-    }
-
-    public void setId_empleado(int id_empleado) {
-        this.id_empleado = id_empleado;
-    }
-
-    public int getId_tipoempleado() {
-        return id_tipoempleado;
-    }
-
-    public void setId_tipoempleado(int id_tipoempleado) {
-        this.id_tipoempleado = id_tipoempleado;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsuario() {
@@ -58,15 +46,22 @@ public class Empleado{
         this.clave = clave;
     }
 
+    public int getIdTipoEmpleado() {
+        return idTipoEmpleado;
+    }
+
+    public void setIdTipoEmpleado(int idTipoEmpleado) {
+        this.idTipoEmpleado = idTipoEmpleado;
+    }
 
     @Override
     public String toString() {
         return "Empleado{" +
-                "id_empleado=" + id_empleado +
-                ", id_persona=" + id_persona +
-                ", id_tipoempleado=" + id_tipoempleado +
+                "id=" + id +
                 ", usuario='" + usuario + '\'' +
                 ", clave='" + clave + '\'' +
+                ", idTipoEmpleado=" + idTipoEmpleado +
                 '}';
     }
 }
+

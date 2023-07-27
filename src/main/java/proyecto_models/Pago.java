@@ -1,50 +1,63 @@
 package proyecto_models;
 
+import java.util.Date;
+
 public class Pago {
 
-    private int id_pago;
-    private int id_pedido;
-    private int costo_extra;
+    private int id;
+    private int idPedido;
+    private int idMetodoPago;
+    private Date fecha;
 
-    public Pago(int id_pago, int id_pedido, int costo_extra) {
-        this.id_pago = id_pago;
-        this.id_pedido = id_pedido;
-        this.costo_extra = costo_extra;
+    public Pago(int id, int idPedido, int idMetodoPago, Date fecha) {
+        this.id = id;
+        this.idPedido = idPedido;
+        this.idMetodoPago = idMetodoPago;
+        this.fecha = fecha;
     }
 
     public Pago() {
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIdPedido() {
+        return idPedido;
+    }
+
+    public void setIdPedido(int idPedido) {
+        this.idPedido = idPedido;
+    }
+
+    public int getIdMetodoPago() {
+        return idMetodoPago;
+    }
+
+    public void setIdMetodoPago(int idMetodoPago) {
+        this.idMetodoPago = idMetodoPago;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
     @Override
     public String toString() {
         return "Pago{" +
-                "id_pago=" + id_pago +
-                ", id_pedido=" + id_pedido +
-                ", costo_extra=" + costo_extra +
+                "id=" + id +
+                ", idPedido=" + idPedido +
+                ", idMetodoPago=" + idMetodoPago +
+                ", fecha=" + fecha +
                 '}';
-    }
-
-    public int getId_pago() {
-        return id_pago;
-    }
-
-    public void setId_pago(int id_pago) {
-        this.id_pago = id_pago;
-    }
-
-    public int getId_pedido() {
-        return id_pedido;
-    }
-
-    public void setId_pedido(int id_pedido) {
-        this.id_pedido = id_pedido;
-    }
-
-    public int getCosto_extra() {
-        return costo_extra;
-    }
-
-    public void setCosto_extra(int costo_extra) {
-        this.costo_extra = costo_extra;
     }
 }

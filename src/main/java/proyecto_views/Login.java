@@ -2,11 +2,6 @@ package proyecto_views;
 
 
 
-import javax.swing.*;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class Login extends javax.swing.JFrame {
 
     

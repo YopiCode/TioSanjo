@@ -1,7 +1,6 @@
 package proyecto_DAO;
 
 import proyecto_models.Mesa;
-import proyecto_models.Platillo;
 import proyecto_utils.Crud;
 
 import java.util.List;

@@ -23,7 +23,7 @@ public class Crud<T> {
 
     public T create(T obja) {
         String CREATE = "insert into {class} ({atributos}) values ({valores})";
-       
+
         StringBuilder sb = new StringBuilder();
         StringBuilder sb2 = new StringBuilder();
         for (Field field : tClass.getDeclaredFields()) {
@@ -50,7 +50,9 @@ public class Crud<T> {
                     continue;
                 }
                 String methodName = "get" + Character.toUpperCase(fieldName.charAt(0)) + fieldName.substring(1);
-
+                if (field.getType() == boolean.class) {
+                    methodName = "is" + Character.toUpperCase(fieldName.charAt(0)) + fieldName.substring(1);
+                }
                 Method method = tClass.getMethod(methodName);
                 Object valor = method.invoke(obja);
                 ps.setObject(parameterIndex, valor);
@@ -71,8 +73,8 @@ public class Crud<T> {
     }
 
     public T update(T obja) {
-        String UPDATE = "update {class} set {atributos} where id_class = ?";
-        
+        String UPDATE = "update {class} set {atributos} where id = ?";
+
         StringBuilder sb = new StringBuilder();
         for (Field field : tClass.getDeclaredFields()) {
             String fieldname = field.getName();
@@ -95,6 +97,9 @@ public class Crud<T> {
                     continue;
                 }
                 String methodName = "get" + Character.toUpperCase(fieldName.charAt(0)) + fieldName.substring(1);
+                if (field.getType() == boolean.class) {
+                    methodName = "is" + Character.toUpperCase(fieldName.charAt(0)) + fieldName.substring(1);
+                }
                 Method method = tClass.getMethod(methodName);
                 Object valor = method.invoke(obja);
                 ps.setObject(parameterIndex, valor);
@@ -118,8 +123,8 @@ public class Crud<T> {
     }
 
 
-    public void delete(int id){
-        String DELETE = "delete from {class} where id_{class} = ?";
+    public void delete(int id) {
+        String DELETE = "delete from {class} where id = ?";
 
         String delete = DELETE.replace("{class}", tClass.getSimpleName());
 
@@ -131,7 +136,6 @@ public class Crud<T> {
             throw new RuntimeException(e);
         }
     }
-
 
 
     public ArrayList<T> readAll() {
@@ -171,7 +175,7 @@ public class Crud<T> {
     }
 
 
-    public List<T> findByAllFields(T obj, String... fields){
+    public List<T> findByAllFields(T obj, String... fields) {
         String READ = "select * from {class} where {exist}";
         StringBuilder sb = new StringBuilder();
 
@@ -187,10 +191,15 @@ public class Crud<T> {
         try (PreparedStatement ps = conexion.conectar().prepareCall(read)) {
             int parameterIndex = 1;
             for (String param : fields) {
+                Field field = tClass.getDeclaredField(param);
                 String methodname = "get" + Character.toUpperCase(param.charAt(0)) + param.substring(1);
+                if (field.getType() == boolean.class) {
+                    methodname = "is" + Character.toUpperCase(param.charAt(0)) + param.substring(1);
+                }
                 Method method = tClass.getMethod(methodname);
                 Object valor = method.invoke(obj);
                 ps.setObject(parameterIndex, valor);
+
                 parameterIndex++;
             }
             ResultSet res = ps.executeQuery();
@@ -225,7 +234,7 @@ public class Crud<T> {
     }
 
 
-    public T findByFields(T obj, String... fields){
+    public T findByFields(T obj, String... fields) {
         String READ = "select * from {class} where {exist}";
         StringBuilder sb = new StringBuilder();
 
@@ -280,10 +289,8 @@ public class Crud<T> {
     }
 
 
-
-
     public T findById(int id) {
-        String READ = "select * from {class} where id_{class}=?";
+        String READ = "select * from {class} where id=?";
         String read = READ.replace("{class}", tClass.getSimpleName());
         try (PreparedStatement ps = conexion.conectar().prepareCall(read)) {
             ps.setObject(1, id);
@@ -319,7 +326,7 @@ public class Crud<T> {
     }
 
     private T getLastInsert() {
-        String READ = "select * from {class} order by id_{class} desc limit 1";
+        String READ = "select * from {class} order by id desc limit 1";
         String read = READ.replace("{class}", tClass.getSimpleName());
         try (PreparedStatement ps = conexion.conectar().prepareCall(read)) {
             ResultSet res = ps.executeQuery();

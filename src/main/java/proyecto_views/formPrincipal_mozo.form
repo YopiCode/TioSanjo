@@ -239,27 +239,27 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="MESA5" min="-2" pref="262" max="-2" attributes="0"/>
+                              <Component id="mesaE" min="-2" pref="262" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                              <Component id="MESA6" min="-2" pref="262" max="-2" attributes="0"/>
+                              <Component id="mesaF" min="-2" pref="262" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                              <Component id="MESA7" min="-2" pref="262" max="-2" attributes="0"/>
+                              <Component id="mesaG" min="-2" pref="262" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
-                              <Component id="MESA8" min="-2" pref="262" max="-2" attributes="0"/>
+                              <Component id="mesaH" min="-2" pref="262" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="MESA1" min="-2" pref="262" max="-2" attributes="0"/>
+                              <Component id="mesaA" min="-2" pref="262" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                              <Component id="MESA2" min="-2" pref="262" max="-2" attributes="0"/>
+                              <Component id="mesaB" min="-2" pref="262" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                              <Component id="MESA3" min="-2" pref="262" max="-2" attributes="0"/>
+                              <Component id="mesaC" min="-2" pref="262" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
-                              <Component id="MESA4" min="-2" pref="262" max="-2" attributes="0"/>
+                              <Component id="mesaD" min="-2" pref="262" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="MESA9" min="-2" pref="262" max="-2" attributes="0"/>
+                              <Component id="mesaI" min="-2" pref="262" max="-2" attributes="0"/>
                               <Component id="btnSalir" min="-2" pref="97" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
@@ -271,11 +271,11 @@
                                       <Component id="mozosComboBox" min="-2" pref="282" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <Component id="MESA10" min="-2" pref="262" max="-2" attributes="0"/>
+                                      <Component id="mesaJ" min="-2" pref="262" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                                      <Component id="MESA11" min="-2" pref="262" max="-2" attributes="0"/>
+                                      <Component id="mesaK" min="-2" pref="262" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
-                                      <Component id="MESA12" min="-2" pref="262" max="-2" attributes="0"/>
+                                      <Component id="mesaL" min="-2" pref="262" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
@@ -302,24 +302,24 @@
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="MESA1" alignment="3" min="-2" pref="148" max="-2" attributes="0"/>
-                      <Component id="MESA2" alignment="3" min="-2" pref="148" max="-2" attributes="0"/>
-                      <Component id="MESA3" alignment="3" min="-2" pref="148" max="-2" attributes="0"/>
-                      <Component id="MESA4" alignment="3" min="-2" pref="148" max="-2" attributes="0"/>
+                      <Component id="mesaA" alignment="3" min="-2" pref="148" max="-2" attributes="0"/>
+                      <Component id="mesaB" alignment="3" min="-2" pref="148" max="-2" attributes="0"/>
+                      <Component id="mesaC" alignment="3" min="-2" pref="148" max="-2" attributes="0"/>
+                      <Component id="mesaD" alignment="3" min="-2" pref="148" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="MESA5" alignment="3" min="-2" pref="148" max="-2" attributes="0"/>
-                      <Component id="MESA6" alignment="3" min="-2" pref="148" max="-2" attributes="0"/>
-                      <Component id="MESA7" alignment="3" min="-2" pref="148" max="-2" attributes="0"/>
-                      <Component id="MESA8" alignment="3" min="-2" pref="148" max="-2" attributes="0"/>
+                      <Component id="mesaE" alignment="3" min="-2" pref="148" max="-2" attributes="0"/>
+                      <Component id="mesaF" alignment="3" min="-2" pref="148" max="-2" attributes="0"/>
+                      <Component id="mesaG" alignment="3" min="-2" pref="148" max="-2" attributes="0"/>
+                      <Component id="mesaH" alignment="3" min="-2" pref="148" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="MESA9" alignment="3" min="-2" pref="148" max="-2" attributes="0"/>
-                      <Component id="MESA10" alignment="3" min="-2" pref="148" max="-2" attributes="0"/>
-                      <Component id="MESA11" alignment="3" min="-2" pref="148" max="-2" attributes="0"/>
-                      <Component id="MESA12" alignment="3" min="-2" pref="148" max="-2" attributes="0"/>
+                      <Component id="mesaI" alignment="3" min="-2" pref="148" max="-2" attributes="0"/>
+                      <Component id="mesaJ" alignment="3" min="-2" pref="148" max="-2" attributes="0"/>
+                      <Component id="mesaK" alignment="3" min="-2" pref="148" max="-2" attributes="0"/>
+                      <Component id="mesaL" alignment="3" min="-2" pref="148" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -353,7 +353,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="MESA1">
+        <Component class="javax.swing.JButton" name="mesaA">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="24" style="1"/>
@@ -361,10 +361,10 @@
             <Property name="text" type="java.lang.String" value="MESA 1"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MESA1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mesaAActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="MESA2">
+        <Component class="javax.swing.JButton" name="mesaB">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="24" style="1"/>
@@ -372,10 +372,10 @@
             <Property name="text" type="java.lang.String" value="MESA 2"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MESA2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mesaBActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="MESA3">
+        <Component class="javax.swing.JButton" name="mesaC">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="24" style="1"/>
@@ -383,10 +383,10 @@
             <Property name="text" type="java.lang.String" value="MESA 3"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MESA3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mesaCActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="MESA4">
+        <Component class="javax.swing.JButton" name="mesaD">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="24" style="1"/>
@@ -394,10 +394,10 @@
             <Property name="text" type="java.lang.String" value="MESA 4"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MESA4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mesaDActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="MESA5">
+        <Component class="javax.swing.JButton" name="mesaE">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="24" style="1"/>
@@ -405,10 +405,10 @@
             <Property name="text" type="java.lang.String" value="MESA 5"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MESA5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mesaEActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="MESA6">
+        <Component class="javax.swing.JButton" name="mesaF">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="24" style="1"/>
@@ -416,10 +416,10 @@
             <Property name="text" type="java.lang.String" value="MESA 6"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MESA6ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mesaFActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="MESA7">
+        <Component class="javax.swing.JButton" name="mesaG">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="24" style="1"/>
@@ -427,10 +427,10 @@
             <Property name="text" type="java.lang.String" value="MESA 7"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MESA7ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mesaGActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="MESA8">
+        <Component class="javax.swing.JButton" name="mesaH">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="24" style="1"/>
@@ -438,10 +438,10 @@
             <Property name="text" type="java.lang.String" value="MESA 8"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MESA8ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mesaHActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="MESA9">
+        <Component class="javax.swing.JButton" name="mesaI">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="24" style="1"/>
@@ -449,10 +449,10 @@
             <Property name="text" type="java.lang.String" value="MESA 9"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MESA9ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mesaIActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="MESA10">
+        <Component class="javax.swing.JButton" name="mesaJ">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="24" style="1"/>
@@ -460,10 +460,10 @@
             <Property name="text" type="java.lang.String" value="MESA 10"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MESA10ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mesaJActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="MESA11">
+        <Component class="javax.swing.JButton" name="mesaK">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="24" style="1"/>
@@ -471,10 +471,10 @@
             <Property name="text" type="java.lang.String" value="MESA 11"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MESA11ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mesaKActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="MESA12">
+        <Component class="javax.swing.JButton" name="mesaL">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="24" style="1"/>
@@ -482,7 +482,7 @@
             <Property name="text" type="java.lang.String" value="MESA 12"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MESA12ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mesaLActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">

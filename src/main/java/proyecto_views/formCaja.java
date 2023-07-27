@@ -4,26 +4,68 @@
  */
 package proyecto_views;
 
+import proyecto_DAO.ClienteDao;
+import proyecto_DAO.ItemCartaDao;
+import proyecto_DAO.PagoDao;
+import proyecto_DAO.PedidoDao;
+import proyecto_models.*;
+
 import javax.swing.table.DefaultTableModel;
-
-
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import static proyecto_views.formPrincipalAdmin.panelContenido;
 
 
 public class formCaja extends javax.swing.JPanel {
-    String [] encabezado1={"MESA","MOZO","CLIENTE","TOTAL","PAGO"};
-    DefaultTableModel tabConsu;
-    
-    String [] encabezado2={"MESA","MOZO","CLIENTE","PRECIO","CANTIDAD","TOTAL","PRODUCTO","PAGO"};
-    DefaultTableModel tabDet;
+    PedidoDao pedidoDao = new PedidoDao();
+    ItemCartaDao itemCartaDao = new ItemCartaDao();
+    PagoDao pagoDao = new PagoDao();
+    ClienteDao clienteDao = new ClienteDao();
+    List<Pedido> pedidos = pedidoDao.listaPedido();
+    List<DetallePedido> detalles = new ArrayList<>();
+    List<MetodoPago> metodos = pagoDao.listaMetodoPago();
+    Pedido pedido = new Pedido();
 
     public formCaja() {
         initComponents();
-       tabConsu=new DefaultTableModel(null, encabezado1);
-       tabConsumo.setModel(tabConsu);
-       
-       tabDet=new DefaultTableModel(null,encabezado2);
-       tabDetalle.setModel(tabDet);
-       
+        listarTablaPedidos();
+        listarTablaDetalle();
+        System.out.println(pedidos);
+        metodos.forEach(item-> metodoPago.addItem(item.getMetodoPago()));
+    }
+
+    public void listarTablaPedidos() {
+        String[] encabezado = {"Nro", "Cliente", "Mesa", "Fecha", "Estado"};
+        Object[][] data = pedidos.stream()
+                .map(item -> {
+                    Cliente cliente = clienteDao.getCliente(item.getIdCliente());
+                    String estado = "Cancelado";
+                    if (pagoDao.getPagoByIdPedido(item.getId()) != null) {
+                        estado = "Sin Cancelar";
+                    }
+                    return new Object[]{item.getId(),
+                            cliente.getNombre(),
+                            item.getIdMesa(),
+                            item.getFecha(),
+                            estado};
+                })
+                .toArray(Object[][]::new);
+        tabConsumo.setModel(new DefaultTableModel(data, encabezado));
+    }
+
+    public void listarTablaDetalle() {
+        String[] encabezado = {"Item", "Precio Unit", "Cantidad"};
+        Object[][] data = detalles.stream()
+                .map(item -> {
+                    ItemCarta itemCarta = itemCartaDao.getItemCarta(item.getIdItem());
+                    return new Object[]{
+                            itemCarta.getNombre(),
+                            itemCarta.getPrecioUnit(),
+                            item.getCantidad()};
+                })
+                .toArray(Object[][]::new);
+        tabDetalle.setModel(new DefaultTableModel(data, encabezado));
     }
 
     /**
@@ -46,11 +88,10 @@ public class formCaja extends javax.swing.JPanel {
         tabConsumo = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        txtTotal = new javax.swing.JLabel();
         btnCobrar = new javax.swing.JButton();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
         jLabel15 = new javax.swing.JLabel();
+        metodoPago = new javax.swing.JComboBox<>();
 
         jCheckBox1.setText("Yape");
 
@@ -80,12 +121,17 @@ public class formCaja extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tabDetalle);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 349, 918, 183));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 918, 183));
 
         btnDetalle.setBackground(new java.awt.Color(238, 0, 27));
         btnDetalle.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnDetalle.setForeground(new java.awt.Color(255, 255, 255));
         btnDetalle.setText("DETALLE");
+        btnDetalle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDetalleActionPerformed(evt);
+            }
+        });
         add(btnDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(699, 104, 117, 35));
 
         tabConsumo.setModel(new javax.swing.table.DefaultTableModel(
@@ -101,38 +147,53 @@ public class formCaja extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tabConsumo);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 103, 625, 182));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 103, 625, 160));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("TOTAL A PAGAR :");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 540, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 520, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Lista Detallada");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 318, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setText("S/.  00.00");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 540, -1, -1));
+        txtTotal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtTotal.setText("S/.  00.00");
+        add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 520, -1, -1));
 
         btnCobrar.setBackground(new java.awt.Color(238, 0, 27));
         btnCobrar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnCobrar.setForeground(new java.awt.Color(255, 255, 255));
         btnCobrar.setText("COBRAR");
-        add(btnCobrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(817, 615, 117, 35));
-
-        jCheckBox3.setText("Yape");
-        add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 580, -1, -1));
-
-        jCheckBox4.setText("Efectivo");
-        add(jCheckBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 580, -1, -1));
+        btnCobrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCobrarActionPerformed(evt);
+            }
+        });
+        add(btnCobrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 580, 117, 35));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel15.setText("Metodo de Pago:");
-        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 580, -1, -1));
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 530, -1, -1));
+
+        add(metodoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 530, 140, 30));
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private void btnDetalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalleActionPerformed
+        pedido = pedidos.get(tabConsumo.getSelectedRow());
+        txtTotal.setText(String.valueOf(pedido.getTotal()));
+        detalles = pedidoDao.listaDetallePedidoByIdPedido(pedido.getId());
+        listarTablaDetalle();
+    }//GEN-LAST:event_btnDetalleActionPerformed
+
+    private void btnCobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCobrarActionPerformed
+        Pago pago = new Pago();
+        pago.setIdPedido(pedido.getId());
+        pago.setIdMetodoPago(metodos.get(metodoPago.getSelectedIndex()).getId());
+        pago.setFecha(new Date());
+        pagoDao.registrarPago(pago);
+        new CambiaPanel(panelContenido, new formCaja());
+    }//GEN-LAST:event_btnCobrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -140,17 +201,16 @@ public class formCaja extends javax.swing.JPanel {
     private javax.swing.JButton btnDetalle;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JComboBox<String> metodoPago;
     private javax.swing.JTable tabConsumo;
     private javax.swing.JTable tabDetalle;
+    private javax.swing.JLabel txtTotal;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,38 +1,38 @@
 package proyecto_models;
 
 public class Mesa {
-    private int id_mesa;
-    private String descripcionmesa;
+    private int id;
+    private boolean estado;
 
-    public Mesa(int id_mesa, String descripcionmesa) {
-        this.id_mesa = id_mesa;
-        this.descripcionmesa = descripcionmesa;
+    public Mesa(int id, boolean estado) {
+        this.id = id;
+        this.estado = estado;
     }
 
     public Mesa() {
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     @Override
     public String toString() {
         return "Mesa{" +
-                "id_mesa=" + id_mesa +
-                ", descripcionmesa='" + descripcionmesa + '\'' +
+                "id=" + id +
+                ", estado=" + estado +
                 '}';
-    }
-
-    public int getId_mesa() {
-        return id_mesa;
-    }
-
-    public void setId_mesa(int id_mesa) {
-        this.id_mesa = id_mesa;
-    }
-
-    public String getDescripcionmesa() {
-        return descripcionmesa;
-    }
-
-    public void setDescripcionmesa(String descripcionmesa) {
-        this.descripcionmesa = descripcionmesa;
     }
 }

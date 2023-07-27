@@ -157,9 +157,9 @@ public class Login_Mozo extends javax.swing.JFrame {
         String usuario = inputUser.getText();
         String clave = inputClave.getText();
 
-        Empleado empleado = new Empleado(usuario, clave, 1);
+        Empleado empleado = new Empleado(usuario, clave,1 );
         
-        if (!dao.verificarCredenciales(empleado)) {
+        if (dao.verificarCredenciales(empleado)==null) {
             JOptionPane.showMessageDialog(null, "Los datos son incorrectos. Por favor, verifica tu usuario y contraseña.","Credenciales incorrectas | Tio Sanjo",JOptionPane.ERROR_MESSAGE);
             return;
     }

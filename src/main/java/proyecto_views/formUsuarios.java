@@ -7,11 +7,6 @@ package proyecto_views;
 
 
 import proyecto_DAO.EmpleadoDao;
-import proyecto_DAO.PersonaDao;
-import proyecto_models.Persona;
-
-import javax.swing.table.DefaultTableModel;
-import java.util.List;
 
 import static proyecto_utils.LlenadoTabla.LlenarTabla;
 
@@ -21,9 +16,8 @@ import static proyecto_utils.LlenadoTabla.LlenarTabla;
  */
 public class formUsuarios extends javax.swing.JPanel {
  
-    String [] encabezado={"NOMBRE EMPLEADO","TIPO EMPLEADO","TELEFONO"};
+
     EmpleadoDao dao = new EmpleadoDao();
-    PersonaDao personaDao = new PersonaDao();
     public formUsuarios() {
         initComponents();
         listarTabla();
@@ -140,10 +134,10 @@ public class formUsuarios extends javax.swing.JPanel {
 
    
     public void listarTabla() {
+        String [] encabezado={"NOMBRE EMPLEADO","TIPO EMPLEADO"};
         Object[][] data = dao.listaEmpleados().stream()
-                .map(item->new Object[]{personaDao.getPersona(item.getId_persona()).getNombre(),
-                        item.getId_tipoempleado(),
-                        personaDao.getPersona(item.getId_persona()).getTelefono()})
+                .map(item->new Object[]{item.getUsuario(),
+                        item.getIdTipoEmpleado()})
                 .toArray(Object[][]::new);
         LlenarTabla(tabUser, encabezado, data);
     }

@@ -12,7 +12,7 @@ package proyecto_views;
 import javax.swing.JPanel;
 
 public class CambiaPanel {
-    //
+
     private JPanel container;
     private JPanel content;
 
@@ -26,7 +26,7 @@ public class CambiaPanel {
         this.container.removeAll();
         this.container.revalidate();
         this.container.repaint();
-        
+
         this.container.add(this.content);
         this.container.revalidate();
         this.container.repaint();

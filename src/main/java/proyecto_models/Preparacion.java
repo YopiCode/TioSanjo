@@ -1,20 +1,19 @@
 package proyecto_models;
 
-public class DetallePedido {
-
+public class Preparacion {
     private int id;
-    private int idPedido;
     private int idItem;
+    private int idInsumo;
     private int cantidad;
 
-    public DetallePedido(int id, int idPedido, int idItem, int cantidad) {
+    public Preparacion(int id, int idItem, int idInsumo, int cantidad) {
         this.id = id;
-        this.idPedido = idPedido;
         this.idItem = idItem;
+        this.idInsumo = idInsumo;
         this.cantidad = cantidad;
     }
 
-    public DetallePedido() {
+    public Preparacion() {
     }
 
     public int getId() {
@@ -25,20 +24,20 @@ public class DetallePedido {
         this.id = id;
     }
 
-    public int getIdPedido() {
-        return idPedido;
-    }
-
-    public void setIdPedido(int idPedido) {
-        this.idPedido = idPedido;
-    }
-
     public int getIdItem() {
         return idItem;
     }
 
     public void setIdItem(int idItem) {
         this.idItem = idItem;
+    }
+
+    public int getIdInsumo() {
+        return idInsumo;
+    }
+
+    public void setIdInsumo(int idInsumo) {
+        this.idInsumo = idInsumo;
     }
 
     public int getCantidad() {
@@ -51,10 +50,10 @@ public class DetallePedido {
 
     @Override
     public String toString() {
-        return "DetallePedido{" +
+        return "Preparacion{" +
                 "id=" + id +
-                ", idPedido=" + idPedido +
                 ", idItem=" + idItem +
+                ", idInsumo=" + idInsumo +
                 ", cantidad=" + cantidad +
                 '}';
     }

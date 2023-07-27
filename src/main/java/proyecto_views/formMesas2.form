@@ -105,32 +105,37 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="mesaA" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
-                  <Component id="mesaE" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
-                  <Component id="mesaI" min="-2" pref="220" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="mesaJ" min="-2" pref="220" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="mesaK" min="-2" pref="220" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="mesaL" min="-2" pref="220" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="btnMesa" alignment="0" min="-2" pref="139" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="mesaF" min="-2" pref="220" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jButton4" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
+                          <Component id="jButton6" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
+                          <Component id="jButton8" min="-2" pref="220" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="mesaG" min="-2" pref="220" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="mesaH" min="-2" pref="220" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="mesaB" min="-2" pref="220" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="mesaC" min="-2" pref="220" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="mesaD" min="-2" pref="220" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jButton14" min="-2" pref="220" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jButton15" min="-2" pref="220" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jButton16" min="-2" pref="220" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jButton7" min="-2" pref="220" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jButton10" min="-2" pref="220" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jButton12" min="-2" pref="220" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jButton13" min="-2" pref="220" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jButton5" min="-2" pref="220" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jButton9" min="-2" pref="220" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -142,28 +147,30 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="btnMesa" min="-2" pref="35" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="mesaA" alignment="3" min="-2" pref="141" max="-2" attributes="0"/>
-                  <Component id="mesaC" alignment="3" min="-2" pref="141" max="-2" attributes="0"/>
-                  <Component id="mesaD" alignment="3" min="-2" pref="141" max="-2" attributes="0"/>
-                  <Component id="mesaB" alignment="3" min="-2" pref="141" max="-2" attributes="0"/>
+                  <Component id="jButton4" alignment="3" min="-2" pref="141" max="-2" attributes="0"/>
+                  <Component id="jButton5" alignment="3" min="-2" pref="141" max="-2" attributes="0"/>
+                  <Component id="jButton9" alignment="3" min="-2" pref="141" max="-2" attributes="0"/>
+                  <Component id="jButton13" alignment="3" min="-2" pref="141" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="mesaE" alignment="3" min="-2" pref="141" max="-2" attributes="0"/>
-                  <Component id="mesaF" alignment="3" min="-2" pref="141" max="-2" attributes="0"/>
-                  <Component id="mesaG" alignment="3" min="-2" pref="141" max="-2" attributes="0"/>
-                  <Component id="mesaH" alignment="3" min="-2" pref="141" max="-2" attributes="0"/>
+                  <Component id="jButton6" alignment="3" min="-2" pref="141" max="-2" attributes="0"/>
+                  <Component id="jButton7" alignment="3" min="-2" pref="141" max="-2" attributes="0"/>
+                  <Component id="jButton10" alignment="3" min="-2" pref="141" max="-2" attributes="0"/>
+                  <Component id="jButton12" alignment="3" min="-2" pref="141" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="mesaJ" alignment="3" min="-2" pref="141" max="-2" attributes="0"/>
-                      <Component id="mesaK" alignment="3" min="-2" pref="141" max="-2" attributes="0"/>
-                      <Component id="mesaL" alignment="3" min="-2" pref="141" max="-2" attributes="0"/>
+                      <Component id="jButton14" alignment="3" min="-2" pref="141" max="-2" attributes="0"/>
+                      <Component id="jButton15" alignment="3" min="-2" pref="141" max="-2" attributes="0"/>
+                      <Component id="jButton16" alignment="3" min="-2" pref="141" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="mesaI" min="-2" pref="141" max="-2" attributes="0"/>
+                  <Component id="jButton8" min="-2" pref="141" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="70" max="32767" attributes="0"/>
           </Group>
@@ -180,15 +187,38 @@
         <Property name="iconTextGap" type="int" value="11"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="mesaA">
+    <Component class="javax.swing.JButton" name="btnMesa">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="1b" green="0" red="ee" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="13" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="A&#xd1;ADIR MESA"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMesaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton4">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="1b" green="0" red="ee" type="rgb"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="MESA 1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="mesaC">
+    <Component class="javax.swing.JButton" name="jButton5">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
@@ -203,7 +233,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="mesaE">
+    <Component class="javax.swing.JButton" name="jButton6">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
@@ -217,11 +247,8 @@
           </Border>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mesaEActionPerformed"/>
-      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="mesaF">
+    <Component class="javax.swing.JButton" name="jButton7">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
@@ -236,7 +263,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="mesaI">
+    <Component class="javax.swing.JButton" name="jButton8">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
@@ -251,7 +278,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="mesaD">
+    <Component class="javax.swing.JButton" name="jButton9">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
@@ -266,7 +293,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="mesaG">
+    <Component class="javax.swing.JButton" name="jButton10">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
@@ -281,7 +308,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="mesaH">
+    <Component class="javax.swing.JButton" name="jButton12">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
@@ -296,7 +323,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="mesaB">
+    <Component class="javax.swing.JButton" name="jButton13">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
@@ -311,7 +338,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="mesaJ">
+    <Component class="javax.swing.JButton" name="jButton14">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
@@ -326,7 +353,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="mesaK">
+    <Component class="javax.swing.JButton" name="jButton15">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
@@ -341,7 +368,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="mesaL">
+    <Component class="javax.swing.JButton" name="jButton16">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>

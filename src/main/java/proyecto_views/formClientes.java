@@ -5,36 +5,32 @@
 package proyecto_views;
 
 import proyecto_DAO.ClienteDao;
-import proyecto_DAO.PersonaDao;
 
 import javax.swing.table.DefaultTableModel;
 
-import static proyecto_utils.LlenadoTabla.LlenarTabla;
-
-
 public class formClientes extends javax.swing.JPanel {
-    
-    String [] encabezado={"Nombre","Apellidos","Direccion","Telefono"};
+
+    String[] encabezado = {"Nombre", "Apellidos", "Direccion", "Telefono"};
     ClienteDao dao = new ClienteDao();
-    PersonaDao personaDao = new PersonaDao();
 
     public formClientes() {
         initComponents();
         listarTabla();
-       
+
     }
 
     public void listarTabla() {
+        String[] encabezado = {"Nombre", "Apellidos", "Direccion", "Telefono"};
         Object[][] data = dao.listaCliente().stream()
-                .map(item->new Object[]{personaDao.getPersona(item.getId_persona()).getNombre(),
-                        personaDao.getPersona(item.getId_persona()).getApellidos(),
-                        personaDao.getPersona(item.getId_persona()).getDireccion(),
-                        personaDao.getPersona(item.getId_persona()).getTelefono()})
+                .map(item -> new Object[]{item.getNombre(),
+                        item.getApellido(),
+                        item.getDni(),
+                        item.getFechaRegistro()})
                 .toArray(Object[][]::new);
-        LlenarTabla(tabClientes, encabezado, data);
+        tabClientes.setModel(new DefaultTableModel(data, encabezado));
     }
 
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -97,8 +93,6 @@ public class formClientes extends javax.swing.JPanel {
                         .addContainerGap(138, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

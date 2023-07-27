@@ -4,49 +4,71 @@ package proyecto_models;
 import java.util.Date;
 
 public class Cliente{
-    private int id_cliente;
-    private int id_persona;
-    private Date fecha_registro;
+    private int id;
+    private String nombre;
+    private String apellido;
+    private String dni;
+    private Date fechaRegistro;
 
-    public Cliente(int id_cliente, int id_persona, Date fecha_registro) {
-        this.id_cliente = id_cliente;
-        this.id_persona = id_persona;
-        this.fecha_registro = fecha_registro;
+    public Cliente(int id, String nombre, String apellido, String dni, Date fechaRegistro) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.fechaRegistro = fechaRegistro;
     }
 
     public Cliente() {
     }
 
-    public int getId_cliente() {
-        return id_cliente;
+    public int getId() {
+        return id;
     }
 
-    public void setId_cliente(int id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getId_persona() {
-        return id_persona;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setId_persona(int id_persona) {
-        this.id_persona = id_persona;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public Date getFecha_registro() {
-        return fecha_registro;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setFecha_registro(Date fecha_registro) {
-        this.fecha_registro = fecha_registro;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public Date getFechaRegistro() {
+        return fechaRegistro;
+    }
+
+    public void setFechaRegistro(Date fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
     }
 
     @Override
     public String toString() {
         return "Cliente{" +
-                "id_cliente=" + id_cliente +
-                ", id_persona=" + id_persona +
-                ", fecha_registro=" + fecha_registro +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", dni='" + dni + '\'' +
+                ", fechaRegistro=" + fechaRegistro +
                 '}';
     }
 }

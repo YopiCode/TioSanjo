@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import proyecto_models.Empleado;
+import proyecto_models.TipoEmpleado;
 import proyecto_utils.Crud;
 
 import static proyecto_utils.Conexion.conectar;
@@ -16,8 +17,8 @@ public class EmpleadoDao {
     Crud<Empleado> empleadoCrud = new Crud<>(Empleado.class);
     Empleado empleado = new Empleado();
 
-    public boolean verificarCredenciales(Empleado empleado) {
-        return empleadoCrud.findByFields(empleado, "usuario", "clave") != null;
+    public Empleado verificarCredenciales(Empleado empleado) {
+        return empleadoCrud.findByFields(empleado, "usuario", "clave", "idTipoEmpleado");
     }
 
     public Empleado registrarEmpleado(Empleado empleado){
@@ -33,8 +34,8 @@ public class EmpleadoDao {
     }
 
     public List<Empleado> listaMozos(){
-        empleado.setId_tipoempleado(1);
-        return empleadoCrud.findByAllFields(empleado, "id_tipoempleado");
+        empleado.setIdTipoEmpleado(1);
+        return empleadoCrud.findByAllFields(empleado, "idTipoEmpleado");
     }
 
     public Empleado getEmpleado(int id){
@@ -45,4 +46,9 @@ public class EmpleadoDao {
         return empleadoCrud.readAll();
     }
 
+
+    Crud<TipoEmpleado> tipoEmpleadoCrud = new Crud<>(TipoEmpleado.class);
+    public List<TipoEmpleado> listatIPOEmpleados(){
+        return tipoEmpleadoCrud.readAll();
+    }
 }
