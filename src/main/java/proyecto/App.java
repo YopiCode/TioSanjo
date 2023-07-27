@@ -1,6 +1,6 @@
 package proyecto;
 
-import proyecto_views.Login;
+import proyecto.proyecto_views.Login;
 
 public class App {
 
